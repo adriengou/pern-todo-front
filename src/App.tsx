@@ -1,25 +1,20 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import InputTodo from "./components/input-todo/input-todo";
+import ListTodo from "./components/list-todo/list-todo";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+        <div className="input">
+            <InputTodo/>
+        </div>
+        <div className="list">
+            <ListTodo/>
+        </div>
     </div>
+
   );
 }
 
