@@ -1,29 +1,26 @@
-import React, {Fragment, useState} from 'react';
-import "./input-todo.css"
-import {API_URL} from "../../environment";
-import todoService from "../../services/todo-service";
+import React, { useState } from "react";
+import "./input-todo.css";
 
-const InputTodo = (args:any)=>{
+const InputTodo = (args: any) => {
+  //Variables
+  let { addTodo } = args;
 
-    //Variables
-    let {addTodo} = args
+  //States
+  let [description, setDescription] = useState("");
 
-    //States
-    let [description, setDescription] = useState("")
+  //Functions
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value);
+  };
 
-    //Functions
-    const onInputChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        setDescription(e.target.value)
-    }
+  //Template
+  return (
+    <>
+      <input type="text" value={description} onChange={onInputChange} />
+      <button onClick={() => addTodo(description)}>Add</button>
+      <p>{typeof addTodo}</p>
+    </>
+  );
+};
 
-    //Template
-    return(
-        <div className="input-div">
-            <input type="text" value={description} onChange={onInputChange}/>
-            <button onClick={()=>addTodo(description)}>Add</button>
-            <p>{typeof addTodo}</p>
-        </div>
-    )
-}
-
-export default InputTodo
+export default InputTodo;

@@ -1,15 +1,18 @@
-import React, {Fragment} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 import Todo from "./components/todo/todo";
-
+import Compas from "./components/comp-a/compa-a";
 
 function App() {
+  const { toto, compaRender } = Compas();
+
+  console.log(toto);
+
   return (
     <div className="app">
-        <Todo/>
+      <Todo />
+      <p>{compaRender}</p>
     </div>
-
   );
 }
 
