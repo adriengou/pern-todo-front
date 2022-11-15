@@ -1,31 +1,28 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import "./list-todo.css"
 import {API_URL} from "../../environment";
+import todoService from "../../services/todo-service";
 
-const ListTodo = ()=>{
+const ListTodo = (args:any)=>{
+    //Variables
+    let {list, deleteTodo, updateTodo} = args
+    //States
 
-    const [todoList, setTodoList] = useState([])
+    //Functions
 
-    const getTodos = () => {
 
-    }
-
-    useEffect(()=>{
-        getTodos()
-    })
-
+    //Template
     return(
         <div className="list-div">
-            <div className="todo">
-                <span className="description">Random desc</span>
-                <button className="edit-button">Edit</button>
-                <button className="delete-button">Delete</button>
-            </div>
-            <div className="todo">
-                <span className="description">Just a second random desc</span>
-                <button className="edit-button">Edit</button>
-                <button className="delete-button">Delete</button>
-            </div>
+            {
+                list.map((todo:any, i:number)=>(
+                    <div className="todo" key={i}>
+                        <span className="description">{todo.description}</span>
+                        <button className="edit-button">Edit</button>
+                        <button onClick={()=>deleteTodo(todo)} className="delete-button">Delete</button>
+                    </div>
+                ))
+            }
         </div>
     )
 }
