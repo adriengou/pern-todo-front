@@ -15,11 +15,10 @@ const InputTodo = (args: any) => {
 
   //Template
   return (
-    <>
+    <div className="input-div">
       <input type="text" value={description} onChange={onInputChange} />
       <button onClick={() => addTodo(description)}>Add</button>
-      <p>{typeof addTodo}</p>
-    </>
+    </div>
   );
 };
 

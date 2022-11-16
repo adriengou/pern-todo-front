@@ -1,7 +1,7 @@
 .app {
     font-family: sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.input{
-    margin-bottom: 50px;
-}

@@ -1,6 +1,5 @@
 .list-div{
-    margin: auto;
-    width: fit-content;
+    width: 400px;
 
     display: flex;
     flex-direction: column;
@@ -9,7 +8,7 @@
 
 }
 
-.todo{
+.list-element{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -20,6 +19,6 @@
     border-bottom: 1px solid lightgray;
 }
 
-.todo > span{
-    width: 80%;
+.list-element .description{
+    flex: 1 1;
 }

@@ -12,7 +12,6 @@ const Todo = () => {
 
   useEffect(() => {
     getTodos();
-    console.log(typeof addTodo);
   }, []);
 
   //Functions
@@ -25,12 +24,10 @@ const Todo = () => {
     } catch (err) {
       console.error(err);
     }
-    console.warn("TODOOOOOOOOO");
   };
 
   const getTodos = async () => {
     let response = await todoService.getAll();
-    console.log(response.data);
     setTodoList(response.data);
   };
 
@@ -41,21 +38,26 @@ const Todo = () => {
   };
 
   const updateTodo = async (id: number, description: string) => {
+    console.warn("updateTodo id and description", id, description);
+    if (!id || !description) {
+      throw new Error("id or description is missing");
+      return;
+    }
+
     let response = await todoService.update(id, description);
+    let newTodo = response.data;
     let newList = todoList.map((v: any) => {
-      return id === v.todo_id ? response : v;
+      return newTodo.todo_id === v.todo_id ? newTodo : v;
     });
     setTodoList(newList);
   };
 
   //Template
   return (
-    <div>
+    <div className="todo">
       <h1 className="header">Input Todo</h1>
-      <div className="input">
+      <div className="body">
         <InputTodo addTodo={addTodo} />
-      </div>
-      <div className="list">
         <ListTodo
           list={todoList}
           deleteTodo={deleteTodo}
